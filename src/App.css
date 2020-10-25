@@ -61,3 +61,7 @@
   max-height: 1.6em;
   line-height: 1.8em;
 }
+
+.width100 {
+  width: 100%;
+}

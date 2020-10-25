@@ -4,7 +4,8 @@ import  PropTypes from "prop-types";
 import { SingleAlbumFunc,ListAlbumFunc } from '../../Redux/Action/AuthAction';
 import { Link } from "react-router-dom";
 import Button from "../Common/Field/Button";
- 
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 const AlbumCard = ({auth,SingleAlbumFunc,ListAlbumFunc,customprops}) => {
     const [Album,SetAlbum] = useState();
@@ -45,10 +46,24 @@ if(AlbumList == undefined){
             {AlbumList.map((item,index) => (
                 <div className="col-lg-4" key={index}>
                     <div className="card my-3" >
-                        <img className="card-img-top" src={item.thumbnailUrl} alt={item.title} />
+                        {/* <img className="card-img-top" src={item.thumbnailUrl} alt={item.title} /> */}
+                        
+                        <Zoom>
+                        <div aria-label={item.title}>
+                            <picture>
+                                <source  className="width100" srcSet={item.url} />
+                                    <img
+                                alt="that wanaka tree"
+                                src={item.thumbnailUrl}
+                                className="img-fluid width100"
+                                />
+                            </picture>
+                            </div>
+                        </Zoom>
+ 
                         <div className="card-body">
                             <p className="max-lines">{item.title}</p> 
-                            <Link to={`/almum-model/${item.id}`} > <Button value="View Details" /></Link>
+                            
                             
                         </div>
                     </div>
